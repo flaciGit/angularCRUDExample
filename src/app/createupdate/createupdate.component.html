@@ -1,0 +1,35 @@
+<h3 *ngIf="currentIdToUpdate; else create">
+    Update Policy for Id: {{ currentIdToUpdate }}
+</h3>
+<ng-template #create>
+    <h3> Create New </h3>
+</ng-template>
+
+
+<div>
+    <form [formGroup]="createForm" (ngSubmit)="onCurrentSubmit()">
+        <table class="table table-striped">
+            <tr class="form-group">
+                <td>Name</td>
+                <td>
+                    <input formControlName="name">
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td>Number</td>
+                <td>
+                    <input formControlName="number">
+                </td>
+            </tr>
+            
+            <tr class="form-group">
+                <td colspan="2">
+                <button class="btn btn-outline-success" type="submit" *ngIf="!currentIdToUpdate" (click)="onCurrentSubmit()">CREATE</button>
+                <button class="btn btn-outline-primary" type="submit" *ngIf="currentIdToUpdate" (click)="onCurrentSubmit()">UPDATE</button>
+                <button class="btn btn-outline-danger" (click)="clearForm()">Clear</button>
+                <button class="btn btn-outline-secondary" type="button" [routerLink]="['/list']">Back to list</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

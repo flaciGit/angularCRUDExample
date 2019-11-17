@@ -1,0 +1,22 @@
+
+<ng-container *ngIf="entries">
+<h3>Current Entries</h3>
+<table class="table table-striped">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Number</th>
+    <th>Operation</th>
+  </tr>
+
+  <tr *ngFor="let current of entries">
+        <td>{{current.id}}</td>
+        <td>{{current.name}}</td>
+        <td>{{current.number}}</td>
+    <td>
+        <button class="btn btn-outline-secondary" type="button" [routerLink]="['/update', current.id]">Edit</button>
+        <button class="btn btn-outline-secondary" type="button" (click)="delete(current.id)">Delete</button>
+    </td>
+  </tr>
+</table>
+</ng-container>
